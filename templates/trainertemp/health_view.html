@@ -1,0 +1,60 @@
+{% extends 'trainertemp/trainer_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Helth Details Table</h4>
+<!--                  <p class="card-description">-->
+<!--                    Add class <code>.table-striped</code>-->
+<!--                  </p>-->
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                            <th>
+                                name
+                            </th>
+                          <th>
+                             height
+                          </th>
+                          <th>
+                            weight
+                          </th>
+                          <th>
+                            healthcondition
+                          </th>
+                          <th>
+                              medicineconsuption
+
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in health %}
+                        <tr>
+                            <td>{{i.name}}</td>
+                            <td>{{i.height}}</td>
+                          <td>{{i.weight}}</td>
+                          <td>{{i.healthcondition}}</td>
+                            <td>{{i.medicineconsuption}}</td>
+                          <td><form method="post" action="{% url 'customer_delete' i.id %}" onsubmit="sub1()">
+           {% csrf_token %}
+          <button type="submit" class="btn btn-danger">
+            delete
+          </button>
+        </form>
+        </td></tr>
+    {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                    <script>
+                        function sub1(){
+                        alert("user is deleted!!")
+                        }
+                    </script>
+                </div>
+              </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'admintemp/admin_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Attendance Details Table</h4>
+<!--                  <p class="card-description">-->
+<!--                    Add class <code>.table-striped</code>-->
+<!--                  </p>-->
+
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>
+                             Name
+                          </th>
+                          <th>
+                            attendance
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in customer %}
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{i.name}}</td>
+                          <td><a class="btn btn-primary" href="{% url 'mark_attendance' i.user_id %}" >attendance</a> </td>
+                            {% csrf_token %}
+                          </form></td>
+                          </tr>
+                          {% endfor %}
+<!--                          <td class="py-1">-->
+<!--                          </td>-->
+<!--                          <td></td>-->
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <script>
+                    function sub1(){
+                    alert("user will be deleted!!")
+                    }
+                  </script>
+                </div>
+              </div>
+{% endblock %}
+

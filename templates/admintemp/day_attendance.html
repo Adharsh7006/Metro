@@ -1,0 +1,38 @@
+{% extends 'admintemp/admin_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Attendance Details Table</h4>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">SINO</th>
+                                <th scope="col">customer</th>
+                                <th scope="col">attendance</th>
+                                <th scope="col">time</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for attendance in attendances %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                 <td>{{attendance.name}}</td>
+                                <td>{{attendance.attendance}}</td>
+                                <td>{{attendance.time}}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>
+                        function sub1(){
+                        alert("user is deleted!!")
+                        }
+                        </script>
+                </div>
+              </div>
+</div>
+{% endblock %}

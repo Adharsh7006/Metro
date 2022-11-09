@@ -1,0 +1,22 @@
+{% extends 'admintemp/admin_home.html' %}
+{% block content %}
+<div class='row card-group'>
+  {% for i in notif %}
+<div class="col-4">
+<!--  <div class="card h-100">-->
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+    <h3 class="card-title">{{i.date}}</h3>
+            <h5 class="card-title">{{i.subject}}</h5>
+        <p class="card-text">{{i.text}}</p>
+    <form method="post" action="{% url 'equipments_delete' i.id %}">
+      {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+  </div>
+</div>
+</div>
+<!--</div>-->
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'usertemp/user_home.html' %}
+{% block content %}
+<div class='row card-group'>
+  {% for i in equipments %}
+<div class="col-4">
+<!--  <div class="card h-100">-->
+<div class="card" style="width: 25rem;">
+  <img src="{{i.image.url}}" width="350px" height="250px" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{i.name}}</h5>
+    <p class="card-text">{{i.description}}</p>
+    <form method="post" action="{% url 'equipments_delete' i.id %}">
+      {% csrf_token %}
+      </form>
+  </div>
+</div>
+</div>
+<!--</div>-->
+  {% endfor %}
+</div>
+{% endblock %}
